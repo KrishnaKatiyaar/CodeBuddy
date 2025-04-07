@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeBuddy IDE</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #000;
+            color: white;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .code-editor-container {
+            margin-top: 64px;
+            height: calc(100vh - 64px);
+            display: flex;
+            width: 100%;
+            background-color: #1a1a1a;
+        }
+
+        .editor-wrapper {
+            height: 100%;
+            background-color: #1a1a1a;
+        }
+
+        #codeEditor {
+            width: 100%;
+            height: 100%;
+            background: #1a1a1a;
+            border: none;
+            color: white;
+            font-family: 'JetBrains Mono', monospace;
+            resize: none;
+            padding: 1rem;
+            outline: none;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        #languageSelect {
+            background: #2d2d2d;
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: #1a1a1a;
+            border-radius: 12px;
+            padding: 2rem;
+            width: 90%;
+            max-width: 500px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 bg-[#1a1a1a] border-b border-white/10 h-16 z-50">
+        <div class="h-full max-w-7xl mx-auto px-6 flex justify-between items-center">
+            <div class="flex items-center space-x-4">
+                <a href="/" class="text-xl font-semibold">CodeBuddy IDE</a>
+            </div>
+            <div class="flex items-center space-x-4">
+                <button id="runAnalysis" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+                    Run Analysis
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main IDE Layout -->
+    <div class="code-editor-container">
+        <!-- Code Editor -->
+        <div class="w-1/2 h-full border-r border-white/10">
+            <div class="h-full flex flex-col">
+                <div class="bg-[#2D2D2D] px-4 py-3 border-b border-white/10">
+                    <select id="languageSelect">
+                        <option value="python">Python</option>
+                        <option value="javascript">JavaScript</option>
+                        <option value="java">Java</option>
+                    </select>
+                </div>
+                <div class="flex-1">
+                    <div class="editor-wrapper">
+                        <textarea id="codeEditor" spellcheck="false" 
+                            placeholder="// Write or paste your code here..."></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Analysis Results -->
+        <div class="w-1/2 h-full">
+            <div class="h-full flex flex-col">
+                <div class="bg-[#2D2D2D] px-4 py-3 border-b border-white/10">
+                    <h2 class="text-lg font-semibold">Analysis Results</h2>
+                </div>
+                <div id="analysisResults" class="flex-1 p-6 overflow-y-auto">
+                    <div class="text-gray-400 text-center mt-32">
+                        Click "Run Analysis" to analyze your code
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const runButton = document.getElementById('runAnalysis');
+            const codeEditor = document.getElementById('codeEditor');
+            const languageSelect = document.getElementById('languageSelect');
+            const analysisResults = document.getElementById('analysisResults');
+
+            runButton.addEventListener('click', () => {
+                // Add your analysis logic here
+                analysisResults.innerHTML = '<div class="text-green-400">Analysis in progress...</div>';
+            });
+        });
+    </script>
+</body>
+</html>

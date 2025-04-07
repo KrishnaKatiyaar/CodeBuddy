@@ -1,0 +1,51 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Checkpoints and model weights
+checkpoint-*/
+*.pt
+*.bin
+*.h5
+*.ckpt
+*.tflite
+*.safetensors
+
+# Environment files
+.env
+.venv/
+env/
+venv/
+pip-log.txt
+
+# VS Code and Jupyter
+.vscode/
+.ipynb_checkpoints/
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+
+# Logs and cache
+*.log
+*.out
+*.tmp
+.cache/
+*.pickle
+
+# Build directories
+build/
+dist/
+*.egg-info/
+
+# Node (if any JS stuff is in static/)
+node_modules/
+
+# Git itself
+.git/
+
+# Misc
+*.zip
+*.tar.gz
+*.rar
