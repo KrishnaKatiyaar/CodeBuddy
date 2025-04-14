@@ -1,5 +1,5 @@
 
-# Code Analysis Web Application(CodeBuddy)
+# Code Analysis Web Application (CodeBuddy)
 
 A web-based application for analyzing code performance, providing AI-powered suggestions, and monitoring code quality metrics.
 
